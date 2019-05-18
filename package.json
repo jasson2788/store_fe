@@ -8,8 +8,8 @@
         "start": "webpack-dev-server --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
-        "preinstall": "sudo npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser",
-        "preinstall_update": "sudo npm update -g"
+        "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser",
+        "preinstall_update": "npm update -g"
     },
     "author": "Tim Mousk",
     "license": "ISC",
