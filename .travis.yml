@@ -3,11 +3,12 @@ node_js:
   - "12"
 jobs:
   include:
-    - stage: "Build"
+    - stage: "Verification"
+      name: "Build"
       script: npm run build
-    - stage: "Unit Tests"
+      name: "Unit Tests"
       script: npm test
-    - stage: "Linting"
+      name: "Linting"
       script: npm run lint
-    - stage: "Code Coverage"
+      name: "Code Coverage"
       script: npm run codeCoverage
