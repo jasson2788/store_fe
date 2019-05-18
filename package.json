@@ -8,6 +8,7 @@
         "start": "webpack-dev-server --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
+        "lint": "eslint app/**/*.tsx app/**/*.ts",
         "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser",
         "preinstall_update": "npm update -g"
     },
