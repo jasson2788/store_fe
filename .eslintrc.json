@@ -25,6 +25,12 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "16.8.6"
+        }
+    },
     "rules": {
         "indent": "off",
         "linebreak-style": [
