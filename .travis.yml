@@ -1,14 +1,8 @@
 language: node_js
 node_js:
   - "12"
-jobs:
-  include:
-    - stage: "Verification"
-      name: "Build"
-      script: npm run build
-      name: "Unit Tests"
-      script: npm test
-      name: "Linting"
-      script: npm run lint
-      name: "Code Coverage"
-      script: npm run codeCoverage
+script:
+  - npm run build
+  - npm test
+  - npm run lint
+  - npm run codeCoverage
