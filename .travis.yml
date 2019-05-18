@@ -4,7 +4,7 @@ node_js:
 jobs:
   include:
     - stage: "Build"
-      script: run build
+      script: npm run build
     - stage: "Unit Tests"
       script: npm test
     - stage: "Linting"
