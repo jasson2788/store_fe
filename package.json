@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "jest --updateSnapshot",
-        "codeCoverage": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "coveralls": "jest --updateSnapshot --coverage",
+        "codeCoverage": "npm run coveralls && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "start": "webpack-dev-server --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
