@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as styles from 'app/core/components/sidemenu/sidemenu.scss';
 
-class Sidemenu extends React.Component {
+interface MyProps {
+    hero: string;
+}
+
+interface MyState {
+    hero: string;
+}
+
+class Sidemenu extends React.Component<MyProps, MyState> {
 
     private container = React.createRef<HTMLDivElement>();
     private opacity = React.createRef<HTMLDivElement>();
