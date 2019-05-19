@@ -18,7 +18,10 @@ class Sidemenu extends React.Component<MyProps, MyState> {
         return (
             <div className={styles.sidemenu}>
                 <div className={styles.container} ref={this.container}>{this.props.children}</div>
-                <div className={styles.opacity} ref={this.opacity} onTransitionEnd={this.transitionEnd}></div>
+                <div className={styles.opacity}
+                    ref={this.opacity}
+                    onTransitionEnd={this.transitionEnd}>
+                </div>
             </div >
         );
     }
@@ -26,7 +29,7 @@ class Sidemenu extends React.Component<MyProps, MyState> {
     private transitionEnd = (): void => {
         if (!this.opacity || !this.opacity.current) return;
 
-        const isHidden = Number(this.opacity.current.style.opacity) === 0;
+        const isHidden = Number(this.opacity.current.style.opacity);
 
         this.opacity.current.style.visibility = isHidden ? 'hidden' : 'visible';
     }
