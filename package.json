@@ -11,7 +11,7 @@
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
         "lint": "eslint app/**/*.tsx app/**/*.ts",
-        "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript",
+        "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser @jasson2788/eslint-config-typescript typescript",
         "preinstallUpdate": "npm update -g"
     },
     "author": "Tim Mousk",
@@ -19,6 +19,7 @@
     "devDependencies": {
         "awesome-typescript-loader": "^5.2.1",
         "clean-webpack-plugin": "^2.0.2",
+        "coveralls": "^3.0.3",
         "css-loader": "^2.1.1",
         "html-webpack-inline-source-plugin": "^1.0.0-beta.2",
         "html-webpack-plugin": "^4.0.0-beta.5",
@@ -35,8 +36,7 @@
         "typescript": "^3.4.5",
         "webpack": "^4.31.0",
         "webpack-cli": "^3.3.2",
-        "webpack-dev-server": "^3.4.1",
-        "coveralls": "^3.0.3"
+        "webpack-dev-server": "^3.4.1"
     },
     "dependencies": {
         "@types/jest": "^24.0.13",
