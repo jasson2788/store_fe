@@ -11,16 +11,8 @@ interface MyState {
 
 class Sidemenu extends React.Component<MyProps, MyState> {
 
-    private container = React.createRef<HTMLDivElement>();
-    private opacity = React.createRef<HTMLDivElement>();
-
-    private transitionEnd = (): void => {
-        if (!this.opacity || !this.opacity.current) return;
-
-        const isHidden = Number(this.opacity.current.style.opacity) === 0;
-
-        this.opacity.current.style.visibility = isHidden ? 'hidden' : 'visible';
-    }
+    private container: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
+    private opacity: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 
     public render(): React.ReactNode {
         return (
@@ -30,6 +22,15 @@ class Sidemenu extends React.Component<MyProps, MyState> {
             </div >
         );
     }
+
+    private transitionEnd = (): void => {
+        if (!this.opacity || !this.opacity.current) return;
+
+        const isHidden = Number(this.opacity.current.style.opacity) === 0;
+
+        this.opacity.current.style.visibility = isHidden ? 'hidden' : 'visible';
+    }
+
 }
 
 export {

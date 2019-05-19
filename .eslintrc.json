@@ -32,10 +32,18 @@
         }
     },
     "rules": {
-        "indent": "off",
+        "@typescript-eslint/generic-type-naming": 2,
+        "@typescript-eslint/member-naming": 2,
+        "@typescript-eslint/member-ordering": 2,
+        "@typescript-eslint/no-unnecessary-type-assertion": 2,
+        "@typescript-eslint/unified-signatures": 2,
         "linebreak-style": [
             "error",
             "unix"
+        ],
+        "eol-last": [
+            "error",
+            "always"
         ],
         "quotes": [
             "error",
@@ -44,6 +52,7 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "indent": "off"
     }
 }
