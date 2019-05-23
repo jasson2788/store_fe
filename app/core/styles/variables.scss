@@ -1,1 +1,15 @@
-$primary: red;
+$font: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$font-size: 16px;
+$bg-color: #fff;
+$text-color: #7B847B;
+$text-color-light: #fff;
+$border: 1px solid darken($bg-color, 5%);
+
+$logo: #ff6348;
+
+$screen-giant: 1100px;
+$screen-big: 960px;
+$screen-medium: 650px;
+$screen-small: 480px;
+
+$menu-anim: .15s;

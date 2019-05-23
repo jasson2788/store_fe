@@ -10,7 +10,7 @@
         "start": "webpack-dev-server --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
-        "lint": "eslint app/**/*.tsx app/**/*.ts",
+        "lint": "eslint app --ext .tsx --ext .ts",
         "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser @jasson2788/eslint-config-typescript typescript",
         "preinstallUpdate": "npm update -g"
     },
@@ -39,12 +39,19 @@
         "webpack-dev-server": "^3.4.1"
     },
     "dependencies": {
+        "@types/graphql": "^14.2.0",
         "@types/jest": "^24.0.13",
         "@types/node": "^12.0.2",
         "@types/react": "^16.8.17",
         "@types/react-dom": "^16.8.4",
         "@types/react-test-renderer": "^16.8.1",
+        "apollo-cache-inmemory": "^1.5.1",
+        "apollo-client": "^2.5.1",
+        "apollo-link-http": "^1.5.14",
+        "graphql": "^14.3.0",
+        "graphql-tag": "^2.10.1",
         "react": "^16.8.6",
+        "react-apollo": "^2.5.5",
         "react-dom": "^16.8.6"
     }
 }

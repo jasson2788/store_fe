@@ -1,0 +1,24 @@
+@mixin transitionTranform($time, $option) {
+    -webkit-transition: -webkit-transform $time $option;
+    -moz-transition: -moz-transform $time $option;
+    -ms-transition: -ms-transform $time $option;
+    -o-transition: -o-transform $time $option;
+    transition: transform $time $option;
+}
+
+@mixin transition($property, $time, $option) {
+    -webkit-transition: $property $time $option;
+    -moz-transition: $property $time $option;
+    -ms-transition: $property $time $option;
+    -o-transition: $property $time $option;
+    transition: $property $time $option;
+}
+
+@mixin noselect() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

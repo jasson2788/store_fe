@@ -1,40 +1,101 @@
 import * as React from 'react';
 import * as styles from 'app/core/components/sidemenu/sidemenu.scss';
 
-interface MyProps {
-    hero: string;
-}
+import { SidemenuProps, SidemenuWrapperProps } from 'core/components/sidemenu/interfaces/props';
 
-interface MyState {
-    hero: string;
-}
+import { Helper } from 'core/libs/helpers';
+import { Parts } from 'core/components/sidemenu/interfaces/parts';
+import { Request } from 'core/components/request/request';
 
-class Sidemenu extends React.Component<MyProps, MyState> {
+import gql from 'graphql-tag';
+
+class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
 
     private container: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
     private opacity: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 
     public render(): React.ReactNode {
         return (
-            <div className={styles.sidemenu}>
+            <React.Fragment>
                 <div className={styles.container} ref={this.container}>{this.props.children}</div>
                 <div className={styles.opacity}
                     ref={this.opacity}
+                    onClick={this.close}
                     onTransitionEnd={this.transitionEnd}>
                 </div>
-            </div >
+            </React.Fragment>
         );
     }
 
-    private transitionEnd = (): void => {
-        if (!this.opacity || !this.opacity.current) return;
-
-        const isHidden = Number(this.opacity.current.style.opacity);
-
-        this.opacity.current.style.visibility = isHidden ? 'hidden' : 'visible';
+    public componentDidUpdate(props: SidemenuWrapperProps): void {
+        if (props.open !== this.props.open) this.toggle(this.props.open as boolean);
     }
 
+    public componentDidMount(): void {
+        const parts = this.getParts();
+        if (!parts) return;
+
+        Helper.transformX(parts.container, this.props.open ?
+            '0px' : `${this.props.align}${parts.container.offsetWidth}px`);
+
+        if (this.props.open) {
+            parts.opacity.style.visibility = 'visible';
+            parts.opacity.style.opacity = '1';
+        }
+    }
+
+    public shouldComponentUpdate(props: SidemenuWrapperProps): boolean {
+        return props.open !== this.props.open;
+    }
+
+    private close = (): void => {
+        if (!this.props.client) return;
+        this.props.client.writeData({
+            data: {
+                [this.props.variable]: !this.props.open
+            }
+        });
+    }
+
+    private toggle(open: boolean): void {
+        const parts = this.getParts();
+        if (!parts) return;
+
+        parts.container.classList.add(styles.transition);
+        parts.opacity.classList.add(styles.transition);
+
+        Helper.transformX(parts.container, open ?
+            '0px' : `${this.props.align}${parts.container.offsetWidth}px`);
+
+        if (open) parts.opacity.style.visibility = 'visible';
+
+        parts.opacity.style.opacity = open ? '1' : '0';
+    }
+
+    private transitionEnd = (): void => {
+        const parts = this.getParts();
+        if (!parts) return;
+
+        parts.opacity.style.visibility = Number(parts.opacity.style.opacity) ?
+            'visible' : 'hidden';
+    }
+
+    private getParts = (): Parts | null => {
+        const container = this.container.current;
+        const opacity = this.opacity.current;
+
+        if (!container || !opacity) return null;
+
+        return { container, opacity };
+    };
+
 }
+
+const Sidemenu: React.FC<SidemenuProps> = (props: SidemenuProps): React.ReactElement => (
+    <Request query={gql`{ open:${props.variable} @client }`}>
+        <SidemenuWrapper {...props}></SidemenuWrapper>
+    </Request>
+);
 
 export {
     Sidemenu
