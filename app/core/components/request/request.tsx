@@ -3,7 +3,8 @@ import * as React from 'react';
 import { Query, QueryResult } from 'react-apollo';
 import { RequestProps } from 'core/components/request/interfaces/props';
 
-const Request: React.FC<RequestProps> = (props: RequestProps): React.ReactElement => (
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const withRequest = (props: RequestProps, wrapped: any): React.ReactElement => (
     <Query query={props.query}>
         {(context: QueryResult): React.ReactNode => {
             if (context.loading) {
@@ -17,7 +18,7 @@ const Request: React.FC<RequestProps> = (props: RequestProps): React.ReactElemen
             return (
                 <React.Fragment>
                     {
-                        React.cloneElement(props.children, {
+                        React.cloneElement(React.createElement(wrapped, props), {
                             client: context.client,
                             ...context.data
                         })
@@ -29,5 +30,5 @@ const Request: React.FC<RequestProps> = (props: RequestProps): React.ReactElemen
 );
 
 export {
-    Request
+    withRequest
 };

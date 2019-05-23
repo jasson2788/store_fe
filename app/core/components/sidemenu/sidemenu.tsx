@@ -2,12 +2,10 @@ import * as React from 'react';
 import * as styles from 'app/core/components/sidemenu/sidemenu.scss';
 
 import { SidemenuProps, SidemenuWrapperProps } from 'core/components/sidemenu/interfaces/props';
-
 import { Helper } from 'core/libs/helpers';
 import { Parts } from 'core/components/sidemenu/interfaces/parts';
-import { Request } from 'core/components/request/request';
-
 import gql from 'graphql-tag';
+import { withRequest } from 'core/components/request/request';
 
 class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
 
@@ -91,11 +89,10 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
 
 }
 
-const Sidemenu: React.FC<SidemenuProps> = (props: SidemenuProps): React.ReactElement => (
-    <Request query={gql`{ open:${props.variable} @client }`}>
-        <SidemenuWrapper {...props}></SidemenuWrapper>
-    </Request>
-);
+const Sidemenu = (props: SidemenuProps): React.ReactElement => withRequest({
+    query: gql`{ open:${props.variable} @client }`,
+    ...props
+}, SidemenuWrapper);
 
 export {
     Sidemenu

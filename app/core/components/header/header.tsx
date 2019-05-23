@@ -9,14 +9,15 @@ class Header extends React.Component {
     public render(): React.ReactNode {
         const header = (context: QueryResult): React.ReactNode => {
             if (context.loading) return <header className='noselect'></header>;
-            const toggle = (data: any): void => {
-                context.client.writeData({ data });
-            };
 
             return (
                 <header className={styles.header}>
                     asdasdasdsd
-                    <button onClick={(): void => { toggle({ sidemenu: true }); }}>aaaa</button>
+                    <button onClick={(): void => {
+                        context.client.writeData({
+                            data: { sidemenu: true }
+                        });
+                    }}>aaaa</button>
                 </header>
             );
         };
