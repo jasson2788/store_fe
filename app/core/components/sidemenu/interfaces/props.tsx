@@ -9,5 +9,5 @@ export interface SidemenuProps {
 export interface SidemenuWrapperProps extends SidemenuProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     client?: ApolloClient<any>;
-    open?: boolean;
+    open: boolean;
 }

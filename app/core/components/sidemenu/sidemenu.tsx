@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as styles from 'app/core/components/sidemenu/sidemenu.scss';
 
 import { SidemenuProps, SidemenuWrapperProps } from 'core/components/sidemenu/interfaces/props';
-import { Helper } from 'core/libs/helpers';
+import { Helpers } from 'core/libs/helpers';
 import { Parts } from 'core/components/sidemenu/interfaces/parts';
 import gql from 'graphql-tag';
 import { withRequest } from 'core/components/request/request';
@@ -26,15 +26,14 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
     }
 
     public componentDidUpdate(props: SidemenuWrapperProps): void {
-        if (props.open !== this.props.open) this.toggle(this.props.open as boolean);
+        if (props.open !== this.props.open) this.toggle(this.props.open);
     }
 
     public componentDidMount(): void {
         const parts = this.getParts();
         if (!parts) return;
 
-        Helper.transformX(parts.container, this.props.open ?
-            '0px' : `${this.props.align}${parts.container.offsetWidth}px`);
+        this.transformX(parts, this.props.open);
 
         if (this.props.open) {
             parts.opacity.style.visibility = 'visible';
@@ -62,12 +61,18 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
         parts.container.classList.add(styles.transition);
         parts.opacity.classList.add(styles.transition);
 
-        Helper.transformX(parts.container, open ?
-            '0px' : `${this.props.align}${parts.container.offsetWidth}px`);
+        this.transformX(parts, open);
 
         if (open) parts.opacity.style.visibility = 'visible';
 
         parts.opacity.style.opacity = open ? '1' : '0';
+    }
+
+    private transformX = (parts: Parts, open: boolean): void => {
+        const initialState = 0;
+        const transformedState = Number(`${this.props.align}${parts.container.offsetWidth}`);
+
+        Helpers.transformX(parts.container, open ? initialState : transformedState);
     }
 
     private transitionEnd = (): void => {
