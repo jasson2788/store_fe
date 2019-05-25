@@ -1,30 +1,37 @@
 import * as React from 'react';
-import * as styles from 'app/core/components/header/header.scss';
+import * as styles from 'core/components/header/header.scss';
 
-import { Query, QueryResult } from 'react-apollo';
-
+import { HeaderWrapperProps } from 'core/components/header/interfaces/props';
 import gql from 'graphql-tag';
+import { withRequest } from 'core/components/request/request';
 
-class Header extends React.Component {
+class HeaderWrapper extends React.Component<HeaderWrapperProps> {
     public render(): React.ReactNode {
-        const header = (context: QueryResult): React.ReactNode => {
-            if (context.loading) return <header className='noselect'></header>;
+        return (
+            <header className={styles.header}>
+                asdasdasdsd
+                <button onClick={(): void => {
+                    this.open('sidemenu');
+                }}>sidemenu</button>
+                <button onClick={(): void => {
+                    this.open('options');
+                }}>options</button>
+            </header>
+        );
+    }
 
-            return (
-                <header className={styles.header}>
-                    asdasdasdsd
-                    <button onClick={(): void => {
-                        context.client.writeData({
-                            data: { sidemenu: true }
-                        });
-                    }}>aaaa</button>
-                </header>
-            );
-        };
+    private open = (data: string): void => {
+        if (!this.props.client) return;
 
-        return <Query query={gql`{ sidemenu @client }`}>{header}</Query>;
+        this.props.client.writeData({
+            data: { [data]: true }
+        });
     }
 }
+
+const Header = (): React.ReactElement => withRequest({
+    query: gql`{ sidemenu @client, options @client }`
+}, HeaderWrapper);
 
 export {
     Header

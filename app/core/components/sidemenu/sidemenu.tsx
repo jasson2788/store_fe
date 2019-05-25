@@ -1,7 +1,8 @@
 import * as React from 'react';
-import * as styles from 'app/core/components/sidemenu/sidemenu.scss';
+import * as styles from 'core/components/sidemenu/sidemenu.scss';
 
 import { SidemenuProps, SidemenuWrapperProps } from 'core/components/sidemenu/interfaces/props';
+import { Direction } from 'core/components/sidemenu/enums/direction';
 import { Helpers } from 'core/libs/helpers';
 import { Parts } from 'core/components/sidemenu/interfaces/parts';
 import gql from 'graphql-tag';
@@ -39,6 +40,8 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
             parts.opacity.style.visibility = 'visible';
             parts.opacity.style.opacity = '1';
         }
+
+        if (this.props.align === Direction.RIGHT) parts.container.classList.add(styles.right);
     }
 
     public shouldComponentUpdate(props: SidemenuWrapperProps): boolean {

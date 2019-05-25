@@ -13,6 +13,7 @@ class App extends React.Component {
             <ApolloProvider client={client}>
                 <Header />
                 <Sidemenu align={Direction.LEFT} variable='sidemenu' />
+                <Sidemenu align={Direction.RIGHT} variable='options' />
             </ApolloProvider>
         );
     }
