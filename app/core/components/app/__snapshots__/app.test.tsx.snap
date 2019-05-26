@@ -1,9 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Core component app tests renders 1`] = `
-<header
-  className="header"
->
-  asdasdasdsd
-</header>
+Array [
+  <header
+    className="header"
+  >
+    asdasdasdsd
+    <button
+      onClick={[Function]}
+    >
+      sidemenu
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      options
+    </button>
+  </header>,
+  <div
+    className="container"
+  />,
+  <div
+    className="opacity"
+    onClick={[Function]}
+    onTransitionEnd={[Function]}
+  />,
+  <div
+    className="container"
+  />,
+  <div
+    className="opacity"
+    onClick={[Function]}
+    onTransitionEnd={[Function]}
+  />,
+]
 `;

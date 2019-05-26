@@ -1,3 +1,5 @@
+import 'unfetch/polyfill';
+
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -11,8 +13,9 @@ const link = new HttpLink({
 });
 
 const client = new ApolloClient({
-    cache : cache,
-    link  : link
+    cache     : cache,
+    link      : link,
+    resolvers : {}
 });
 
 cache.writeData({
