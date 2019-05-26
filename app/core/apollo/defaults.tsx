@@ -1,10 +1,10 @@
 const defaults = {
+    cart     : [],
     currency : null,
-    rate     : 1,
     language : 'fr-CA',
-    sidemenu : false,
     options  : false,
-    cart     : []
+    rate     : 1,
+    sidemenu : false
 };
 
 export {

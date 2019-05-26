@@ -11,8 +11,8 @@ const link = new HttpLink({
 });
 
 const client = new ApolloClient({
-    link  : link,
-    cache : cache
+    cache : cache,
+    link  : link
 });
 
 cache.writeData({
