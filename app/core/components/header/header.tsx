@@ -10,10 +10,10 @@ class HeaderWrapper extends React.Component<HeaderWrapperProps> {
         return (
             <header className={styles.header}>
                 asdasdasdsd
-                <button onClick={(): void => {
+                <button id={'sidemenu'} onClick={(): void => {
                     this.open('sidemenu');
                 }}>sidemenu</button>
-                <button onClick={(): void => {
+                <button id={'options'} onClick={(): void => {
                     this.open('options');
                 }}>options</button>
             </header>

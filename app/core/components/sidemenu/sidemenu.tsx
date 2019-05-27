@@ -16,13 +16,15 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
     public render(): React.ReactNode {
         return (
             <React.Fragment>
-                <div className={styles.container} ref={this.container}>{this.props.children}</div>
+                <div className={styles.container} ref={this.container}>
+                    {this.props.children}
+                </div>
                 <div className={styles.opacity}
                     ref={this.opacity}
                     onClick={this.close}
                     onTransitionEnd={this.transitionEnd}>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 
@@ -93,8 +95,9 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
         if (!container || !opacity) return null;
 
         return { container, opacity };
-    };
+    }
 
+    private getId = (firstPart: string): string => `${firstPart}_${this.props.variable}`;
 }
 
 const Sidemenu = (props: SidemenuProps): React.ReactElement => withRequest({
