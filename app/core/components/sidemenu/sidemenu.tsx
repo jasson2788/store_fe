@@ -97,7 +97,6 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
         return { container, opacity };
     }
 
-    private getId = (firstPart: string): string => `${firstPart}_${this.props.variable}`;
 }
 
 const Sidemenu = (props: SidemenuProps): React.ReactElement => withRequest({
