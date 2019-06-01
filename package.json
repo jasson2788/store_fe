@@ -12,6 +12,7 @@
         "coveralls": "jest --updateSnapshot --coverage",
         "codeCoverage": "npm run coveralls && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "start": "webpack-dev-server --open",
+        "start:prod": "webpack-dev-server --mode production --env=production --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
         "lint": "eslint app --ext .tsx --ext .ts",

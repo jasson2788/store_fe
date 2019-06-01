@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as styles from 'core/components/sidemenu/sidemenu.scss';
 
+import { Helpers, _id } from 'core/libs/helpers';
 import { SidemenuProps, SidemenuWrapperProps } from 'core/components/sidemenu/interfaces/props';
+
 import { Direction } from 'core/components/sidemenu/enums/direction';
-import { Helpers } from 'core/libs/helpers';
 import { Parts } from 'core/components/sidemenu/interfaces/parts';
 import gql from 'graphql-tag';
 import { withRequest } from 'core/components/request/request';
@@ -16,13 +17,16 @@ class SidemenuWrapper extends React.Component<SidemenuWrapperProps, {}> {
     public render(): React.ReactNode {
         return (
             <React.Fragment>
-                <div className={styles.container} ref={this.container}>
+                <div className={styles.container}
+                    ref={this.container}
+                    id={_id(`${this.props.variable}_sidemenu_container`)}>
                     {this.props.children}
                 </div>
                 <div className={styles.opacity}
                     ref={this.opacity}
                     onClick={this.close}
-                    onTransitionEnd={this.transitionEnd}>
+                    onTransitionEnd={this.transitionEnd}
+                    id={_id(`${this.props.variable}_sidemenu_opacity`)}>
                 </div>
             </React.Fragment >
         );
