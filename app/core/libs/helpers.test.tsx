@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import { Helpers } from 'core/libs/helpers';
+import { Helpers, _id } from 'core/libs/helpers';
 
 const testTransform = (values: number[]): void => {
     values.forEach((v): void => {
@@ -22,8 +22,7 @@ const testRotate = (values: number[]): void => {
 const testId = (values: string[], production: boolean): void => {
     __PRODUCTION__ = production;
     values.forEach((v): void => {
-        const id = Helpers.id(v);
-        expect(id).toBe(production ? undefined : v);
+        expect(_id(v)).toBe(production ? undefined : v);
     });
 };
 

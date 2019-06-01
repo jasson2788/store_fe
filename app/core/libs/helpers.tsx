@@ -7,11 +7,11 @@ class Helpers {
         obj.style.transform = `rotate(${value}deg)`;
         obj.style.webkitTransform = `rotate(${value}deg)`;
     }
-    public static id(id: string): string | undefined {
-        return __PRODUCTION__ ? undefined : id;
-    }
 }
 
+const _id = (name: string): string | undefined => (__PRODUCTION__ ? undefined : name);
+
 export {
-    Helpers
+    Helpers,
+    _id
 };
