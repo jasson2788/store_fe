@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackInline = require("html-webpack-inline-source-plugin");
 
+const Webpack = require('webpack');
 const Path = require('path');
 
 module.exports = (env) => ({
@@ -57,6 +58,9 @@ module.exports = (env) => ({
         ]
     },
     plugins: [
+        new Webpack.DefinePlugin({
+            __PRODUCTION__: env === "production"
+        }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css'
