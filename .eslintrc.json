@@ -6,7 +6,7 @@
         "jest": true
     },
     "globals": {
-        "__PRODUCTION__": "readonly",
+        "__PRODUCTION__": "writable",
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
         "cy": "readonly"

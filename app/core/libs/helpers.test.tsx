@@ -1,7 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import { Helpers } from 'core/libs/helpers';
 
-
 const testTransform = (values: number[]): void => {
     values.forEach((v): void => {
         const div = document.createElement('div');
@@ -20,10 +19,22 @@ const testRotate = (values: number[]): void => {
     });
 };
 
+const testId = (values: string[], production: boolean): void => {
+    __PRODUCTION__ = production;
+    values.forEach((v): void => {
+        const id = Helpers.id(v);
+        expect(id).toBe(production ? undefined : v);
+    });
+};
+
 describe('Helpers tests', (): void => {
 
     it('should transform', (): void => testTransform([20, 0, -220, 320, 120, -20]));
 
     it('should rotate', (): void => testRotate([-20, 2, -244, 360, 120, -360, 0]));
+
+    it('should give the correct id', (): void => testId(['options', 'sidemenu'], false));
+
+    it('should give the correct id when prod', (): void => testId(['options', 'sidemenu'], true));
 
 });

@@ -14,7 +14,7 @@
         "start": "webpack-dev-server --open",
         "build:dev": "webpack",
         "build": "webpack --mode production --env=production",
-        "lint": "eslint app cypress --ext .tsx --ext .ts",
+        "lint": "eslint app --ext .tsx --ext .ts",
         "preinstall": "npm i -g eslint eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser @jasson2788/eslint-config-typescript typescript",
         "preinstallUpdate": "npm update -g"
     },

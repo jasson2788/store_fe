@@ -1,2 +1,2 @@
 declare module '*.scss';
-declare const __PRODUCTION__: boolean;
+declare let __PRODUCTION__: boolean;

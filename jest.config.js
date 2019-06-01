@@ -1,13 +1,16 @@
 module.exports = {
-    'transform': {
-        '^.+\\.tsx?$': 'ts-jest'
-    },
-    'moduleNameMapper': {
-        '^.+\\.scss$': 'identity-obj-proxy'
+    'globals': {
+        '__PRODUCTION__': false
     },
     'moduleDirectories': [
         './node_modules',
         './app'
     ],
-    'testMatch': ['**/app/**/*test.tsx']
+    'moduleNameMapper': {
+        '^.+\\.scss$': 'identity-obj-proxy'
+    },
+    'testMatch' : ['**/app/**/*test.tsx'],
+    'transform' : {
+        '^.+\\.tsx?$': 'ts-jest'
+    }
 };
