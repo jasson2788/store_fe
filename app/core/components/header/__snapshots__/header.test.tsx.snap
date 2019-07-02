@@ -5,13 +5,13 @@ exports[`Core component header tests renders 1`] = `
   className="header"
 >
   <button
-    id="sidemenu"
+    id="sidemenu_button"
     onClick={[Function]}
   >
     sidemenu
   </button>
   <button
-    id="options"
+    id="options_button"
     onClick={[Function]}
   >
     options

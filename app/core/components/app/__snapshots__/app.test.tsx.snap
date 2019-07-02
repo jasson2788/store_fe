@@ -6,13 +6,13 @@ Array [
     className="header"
   >
     <button
-      id="sidemenu"
+      id="sidemenu_button"
       onClick={[Function]}
     >
       sidemenu
     </button>
     <button
-      id="options"
+      id="options_button"
       onClick={[Function]}
     >
       options
@@ -20,17 +20,21 @@ Array [
   </header>,
   <div
     className="container"
+    id="sidemenu_sidemenu_container"
   />,
   <div
     className="opacity"
+    id="sidemenu_sidemenu_opacity"
     onClick={[Function]}
     onTransitionEnd={[Function]}
   />,
   <div
     className="container"
+    id="options_sidemenu_container"
   />,
   <div
     className="opacity"
+    id="options_sidemenu_opacity"
     onClick={[Function]}
     onTransitionEnd={[Function]}
   />,
